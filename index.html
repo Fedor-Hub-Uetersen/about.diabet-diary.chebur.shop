@@ -132,7 +132,7 @@
             transform: translateY(-2px);
         }
 
-        /* Сетка карточек 2х2 */
+        /* Сітка карток 2х2 */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -155,14 +155,15 @@
             margin-bottom: 12px;
         }
 
-        /* Фотография команды в 4-й карточке */
+        /* Розширений блок фотографії команди в 4-й картці (180px) */
         .team-photo-img {
             width: 100%;
-            height: 140px;
+            height: 180px; 
             object-fit: cover;
             border-radius: 10px;
             margin-bottom: 12px;
             border: 1px solid var(--border);
+            background-color: #f1f5f9;
         }
 
         .feature-title {
@@ -226,7 +227,7 @@
 
     <main class="container">
         
-        <!-- Главный баннер -->
+        <!-- Головний баннер -->
         <section class="hero">
             <h1 id="hero-title">Зручний онлайн-щоденник для контролю цукру та самопочуття</h1>
             <p id="hero-desc">Простий, надійний та зрозумілий інструмент для щоденного ведення записів рівня цукру, доз інсуліну та харчування.</p>
@@ -235,38 +236,38 @@
             </a>
         </section>
 
-        <!-- Переимущества (4 карточки 2х2) -->
+        <!-- Переваги (4 картки 2х2) -->
         <section class="features-grid">
-            <!-- Карточка 1 -->
+            <!-- Картка 1 -->
             <div class="feature-card">
                 <div class="feature-icon">📊</div>
                 <h3 class="feature-title" id="f1-title">Контроль показників</h3>
                 <p class="feature-desc" id="f1-desc">Зручне фіксування замірів цукру в крові протягом дня (ранок, обід, вечір).</p>
             </div>
 
-            <!-- Карточка 2 -->
+            <!-- Картка 2 -->
             <div class="feature-card">
                 <div class="feature-icon">💉</div>
                 <h3 class="feature-title" id="f2-title">Облік інсуліну та ліків</h3>
                 <p class="feature-desc" id="f2-desc">Запис базового та короткого інсуліну, а також відмітки про прийом препаратів.</p>
             </div>
 
-            <!-- Карточка 3 -->
+            <!-- Картка 3 -->
             <div class="feature-card">
                 <div class="feature-icon">📱</div>
                 <h3 class="feature-title" id="f3-title">Завжди під рукою</h3>
                 <p class="feature-desc" id="f3-desc">Сайт адаптований під будь-які смартфони та комп'ютери. Доступний 24/7 з будь-якої точки світу.</p>
             </div>
 
-            <!-- Карточка 4: Наша команда -->
+            <!-- Картка 4: Наша команда -->
             <div class="feature-card">
-                <img src="./team.jpg" alt="Наша команда" class="team-photo-img">
+                <img src="./team.jpg" alt="Наша команда" class="team-photo-img" onerror="this.style.display='none'">
                 <h3 class="feature-title" id="f4-title">Наша команда</h3>
                 <p class="feature-desc" id="f4-desc">Розробка та щоденна підтримка проекту з турботою про кожного користувача.</p>
             </div>
         </section>
 
-        <!-- Блок о проекте -->
+        <!-- Блок про проект -->
         <section class="about-section">
             <h2 style="font-size: 1.5rem; margin-bottom: 12px; color: var(--primary);" id="about-title">Про проект</h2>
             <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 15px;" id="about-p1">
@@ -349,6 +350,7 @@
 
         function setLang(lang) {
             const t = translations[lang];
+            if (!t) return;
 
             document.getElementById('logo-text').innerHTML = t.logoText;
             document.getElementById('btn-header-go').innerText = t.btnHeaderGo;
@@ -374,6 +376,10 @@
             document.getElementById('btn-de').className = lang === 'de' ? 'lang-btn active' : 'lang-btn';
             document.getElementById('btn-en').className = lang === 'en' ? 'lang-btn active' : 'lang-btn';
         }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setLang('uk');
+        });
     </script>
 </body>
 </html>
